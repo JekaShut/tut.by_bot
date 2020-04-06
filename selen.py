@@ -6,10 +6,10 @@ class Jobs_tut_by_bot(object):
         self.driver = driver
         self.label_show = []
         self.site_form = []
-        self.login = "YourLogin"
-        self.password = "YourPassword"
+        self.login = "login"
+        self.password = "password"
         self.button = []
-        self.button_update = []
+        #self.button_update = []
         #self.pas = pas
         #self.log = log
 
@@ -48,9 +48,25 @@ class Jobs_tut_by_bot(object):
         self.find_button_update()
 
     def find_button_update(self):
-        self.button_update = self.driver.find_element_by_class_name("applicant-resumes-action")
-        text_update = self.button_update.text
-        print(text_update) 
+        self.button_update_active = self.driver.find_element_by_class_name("applicant-resumes-update-button")
+        text_update_active = self.button_update_active.text
+        print(text_update_active) 
+
+        #self.button_update_disabled = self.driver.find_element_by_class_name("applicant-resumes-update-button_disabled")
+        #text_update_disabled = self.button_update_disabled.text
+        #print(text_update_disabled) 
+
+        self.click_update_button()
+
+    def click_update_button(self): 
+
+
+        try:
+            self.button_update_active.click()
+        except:
+            print("Try to wait about 4 hours")
+            time.sleep(10)
+        finally: self.go_to_update_page()
 
 
         
