@@ -57,8 +57,9 @@ class Jobs_tut_by_bot(object):
         self.last_update = self.driver.find_element_by_class_name("applicant-resumes-action")
         text_last_update = self.last_update.text
         print(text_last_update) #time 
-
-        self.button_update_active = self.driver.find_element_by_class_name("applicant-resumes-update-button")
+# bloko-button_primary-dimmed 
+# applicant-resumes-update-button
+        self.button_update_active = self.driver.find_element_by_class_name("bloko-button_primary-dimmed")
         text_update_active = self.button_update_active.text
         print(text_update_active) 
 
@@ -73,6 +74,8 @@ class Jobs_tut_by_bot(object):
 
         try:
             self.button_update_active.click()
+            print("Try to wait about 4 hours")
+            time.sleep(1820)
         except:
             print("Try to wait about 4 hours")
             time.sleep(1820)

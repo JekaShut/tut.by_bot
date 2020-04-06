@@ -124,3 +124,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 data.json
+data.json
+*.rar
+data.json
+*.json
+tut.by_bot.zip
