@@ -1,13 +1,19 @@
 from selenium import webdriver
 import time
+import json
+
+with open('data.json') as json_file:
+    data = json.load(json_file)
+
 
 class Jobs_tut_by_bot(object):
     def __init__(self, driver):
+        
         self.driver = driver
         self.label_show = []
         self.site_form = []
-        self.login = "login"
-        self.password = "password"
+        self.login = data["login"]
+        self.password = data["password"]
         self.button = []
         #self.button_update = []
         #self.pas = pas
@@ -48,6 +54,10 @@ class Jobs_tut_by_bot(object):
         self.find_button_update()
 
     def find_button_update(self):
+        self.last_update = self.driver.find_element_by_class_name("applicant-resumes-action")
+        text_last_update = self.last_update.text
+        print(text_last_update) #time 
+
         self.button_update_active = self.driver.find_element_by_class_name("applicant-resumes-update-button")
         text_update_active = self.button_update_active.text
         print(text_update_active) 
@@ -65,7 +75,7 @@ class Jobs_tut_by_bot(object):
             self.button_update_active.click()
         except:
             print("Try to wait about 4 hours")
-            time.sleep(10)
+            time.sleep(1820)
         finally: self.go_to_update_page()
 
 
