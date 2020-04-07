@@ -35,11 +35,14 @@ class Jobs_tut_by_bot(object):
         self.site_form2 = self.driver.find_element_by_name("password")
         print(self.site_form2.get_attribute("name"))
 
+        time.sleep(10)
+
         self.button = self.driver.find_element_by_class_name("account-form-actions")
         
         #for input in site_form1:
         #    self.label_show = input.get_attribute("name")
         #    print(self.label_show)
+        time.sleep(15)
         self.enter_values()
 
     def enter_values(self):
@@ -60,8 +63,8 @@ class Jobs_tut_by_bot(object):
 # bloko-button_primary-dimmed 
 # applicant-resumes-update-button
         self.button_update_active = self.driver.find_element_by_class_name("bloko-button_primary-dimmed")
-        text_update_active = self.button_update_active.text
-        print(text_update_active) 
+        #text_update_active = self.button_update_active.text
+        print("On intern page at: " + str(time.asctime())) 
 
         #self.button_update_disabled = self.driver.find_element_by_class_name("applicant-resumes-update-button_disabled")
         #text_update_disabled = self.button_update_disabled.text
@@ -74,12 +77,14 @@ class Jobs_tut_by_bot(object):
 
         try:
             self.button_update_active.click()
-            print("Try to wait about 4 hours")
-            time.sleep(1820)
+            print("clicked | Success " + str(time.asctime()))
+            
         except:
-            print("Try to wait about 4 hours")
+            print("Try to wait about 4 hours | Fail" + str(time.asctime()))
+            
+        finally:
             time.sleep(1820)
-        finally: self.go_to_update_page()
+            self.go_to_update_page()
 
 
         
