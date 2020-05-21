@@ -57,20 +57,28 @@ class Jobs_tut_by_bot(object):
         self.find_button_update()
 
     def find_button_update(self):
-        self.last_update = self.driver.find_element_by_class_name("applicant-resumes-action")
-        text_last_update = self.last_update.text
-        print(text_last_update) #time 
-# bloko-button_primary-dimmed 
-# applicant-resumes-update-button
-        self.button_update_active = self.driver.find_element_by_class_name("bloko-button_primary-dimmed")
-        #text_update_active = self.button_update_active.text
-        print("On intern page at: " + str(time.asctime())) 
+        try:
+            self.last_update = self.driver.find_element_by_class_name("applicant-resumes-action")
+            text_last_update = self.last_update.text
+            print(text_last_update) #time 
+        
+            # bloko-button_primary-dimmed 
+            # applicant-resumes-update-button
+            self.button_update_active = self.driver.find_element_by_class_name("applicant-resumes-update-button")
+            #text_update_active = self.button_update_active.text
+            print("On intern page at: " + str(time.asctime())) 
 
-        #self.button_update_disabled = self.driver.find_element_by_class_name("applicant-resumes-update-button_disabled")
-        #text_update_disabled = self.button_update_disabled.text
-        #print(text_update_disabled) 
+            #self.button_update_disabled = self.driver.find_element_by_class_name("applicant-resumes-update-button_disabled")
+            #text_update_disabled = self.button_update_disabled.text
+            #print(text_update_disabled) 
 
-        self.click_update_button()
+            self.click_update_button()
+        except:
+            pass
+        finally:
+            time.sleep(1820)#1820
+            self.go_to_update_page()
+
 
     def click_update_button(self): 
 
@@ -80,10 +88,10 @@ class Jobs_tut_by_bot(object):
             print("clicked | Success " + str(time.asctime()))
             
         except:
-            print("Try to wait about 4 hours | Fail" + str(time.asctime()))
+            print("NOT clicked | Fail " + str(time.asctime()))
             
         finally:
-            time.sleep(1820)
+            time.sleep(1820)#1820
             self.go_to_update_page()
 
 
